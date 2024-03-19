@@ -56,7 +56,7 @@ map.on('draw:created', function(e) {
 // Update the fillStyle function to use the getColor function
 function fillStyle(feature) {
     return {
-        fillColor: getColor(feature.properties.US_L4NAME),
+        fillColor: getColor(feature.properties["Level 4"]),
         weight: 0.5,
         fillOpacity: 0.3,
         // Set default border color and fill color separately
@@ -69,7 +69,7 @@ function fillStyle(feature) {
 
 
 //___add geojson from data folder to map
-fetch('data/ecoreg_L4_links.geojson') 
+fetch('data/or_ecoreg_L4_w_link_new7.geojson') 
 .then(response => response.json())
 .then(geojsonData => {
     var geojson = L.geoJSON(geojsonData, {
@@ -129,17 +129,52 @@ function createPopupContent(properties) {
     // Create HTML string for popup content
     var popupContent = "<div>";
 
-    // Loop through properties and add them to popup content
-    for (var key in properties) {
-        if (properties.hasOwnProperty(key)) {
+// Loop through properties and add them to popup content
+for (var key in properties) {
+    if (properties.hasOwnProperty(key)) {
+        // Check if the property is the "link" field
+        if (key === 'link') {
+            // If it is, format it as a clickable link
+            popupContent += "<strong>" + key + ":</strong> <a href='" + properties[key] + "' target='_blank'>" + properties[key] + "</a><br>";
+        } 
+        
+        else if (key === 'Level 3') {
+            // If it is the "Level 3" field, create a clickable link
+            popupContent += "<strong>" + key + ":</strong> <a href='" + properties['link'] + "' target='_blank'>" + properties[key] + "</a><br>";
+        } 
+
+     
+
+            else {
+            // Otherwise, display the property value as usual
             popupContent += "<strong>" + key + ":</strong> " + properties[key] + "<br>";
         }
     }
+}
 
     popupContent += "</div>";
 
     return popupContent;
 }
+
+// Event listener for popup links
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is a popup link
+    if (event.target.classList.contains('popup-link')) {
+        event.preventDefault(); // Prevent default link behavior
+        
+        var targetUrl = event.target.getAttribute('data-target');
+        // Here you can fetch the content of the target URL and update the right column with it
+        fetch(targetUrl)
+            .then(response => response.text())
+            .then(content => {
+                document.getElementById('column right').innerHTML = content;
+            })
+            .catch(error => console.error('Error fetching content:', error));
+    }
+});
+
+
 
 
 //______

@@ -7,6 +7,9 @@ L.Control.geocoder({
     geocoder: L.Control.Geocoder.nominatim()
 }).addTo(map);
 
+
+
+
 // Initialise the FeatureGroup to store editable layers
 var editableLayers = new L.FeatureGroup();
 map.addLayer(editableLayers);
@@ -129,33 +132,25 @@ function createPopupContent(properties) {
     // Create HTML string for popup content
     var popupContent = "<div>";
 
-// Loop through properties and add them to popup content
-for (var key in properties) {
-    if (properties.hasOwnProperty(key)) {
-        // Check if the property is the "link" field
-        if (key === 'link') {
-            // If it is, format it as a clickable link
-            popupContent += "<strong>" + key + ":</strong> <a href='" + properties[key] + "' target='_blank'>" + properties[key] + "</a><br>";
-        } 
-        
-        else if (key === 'Level 3') {
-            // If it is the "Level 3" field, create a clickable link
-            popupContent += "<strong>" + key + ":</strong> <a href='" + properties['link'] + "' target='_blank'>" + properties[key] + "</a><br>";
-        } 
-
-     
-
-            else {
-            // Otherwise, display the property value as usual
-            popupContent += "<strong>" + key + ":</strong> " + properties[key] + "<br>";
+    // Loop through properties and add them to popup content
+    for (var key in properties) {
+        if (properties.hasOwnProperty(key)) {
+            // Check if the property is the "link" field or "Level 3" field
+            if (key === 'link' || key === 'Level 3') {
+                // If it is, format it as a clickable link
+                popupContent += "<strong>" + key + ":</strong> <a href='" + properties[key] + "' target='_blank'>" + properties[key] + "</a><br>";
+            } else {
+                // Otherwise, display the property value as usual
+                popupContent += "<strong>" + key + ":</strong> " + properties[key] + "<br>";
+            }
         }
     }
-}
 
     popupContent += "</div>";
 
     return popupContent;
 }
+
 
 // Event listener for popup links
 document.addEventListener('click', function(event) {

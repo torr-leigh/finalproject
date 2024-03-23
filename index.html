@@ -11,107 +11,94 @@
 <!-- Include Leaflet Draw CSS and JavaScript -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
 <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Style the header */
-.header {
-  background-color: #66a4a7;
-  padding: 2px;
-  text-align: center;
-  font-size: 12px;
-  height: 50px;
-}
-
-/* Create three unequal columns that floats next to each other */
-.column {
-  float: left;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
-
-/* Left and right column */
-.column.left {
-  width: 15%;
-  height: 800px;
-}
-
-.column.right {
-  width: 15%;
-  height: 800px;
-}
-
-/* Middle column */
-.column.middle {
-  float: center;
-  width: 70%;
-  height: 800px;
-  padding: 10px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Style the footer */
-.footer {
-  background-color: #f1f1f1;
-  padding: 10px;
-  text-align: center;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .column.left, .column.right, .column.middle {
-    width: 100%;
-  }
-}
-
-  #map {
-      position: relative; /* Set position relative */
-      width: 100%;
-      height: 95%; /* Optionally set height as well */
-  }
-</style>
+<link rel="stylesheet" href="css\style.css">
 </head>
-<body>
 
-<h2>What Ecoregion do you live in?</h2>
-<p>Type an address in the search bar (On the map, click the 
-  magnifying glass icon to open.) to find out.</p>
-<p>Or draw a polygon around your property using the octagon icon. 
-  (Refresh page to reset drawing,)</p>
+<body style=" background-image: url('img/gradient.png')">
+
+
 
 <div class="header">
-  <h2>Header</h2>
+  <h2 >Situate Your Home Within The Surrounding Landscape</h2>
 </div>
 
 <div class="row">
-  <div class="column left" style="background-color:#aaa;">Column L</div>
-  <div class="column middle" style="background-color:#0a0909;">Column
+  <div class="column one" style="background-color:#0547265b;"> 
+      <h3 :>Step 1: Ecoregions <br>
+        <br>
+        In what Ecoregion do you live?</h3>
+      <p>To find out:
+        <br> &#9733; Click the magnifying glass icon on the map 
+        <br> to open the search bar. 
+        <br> &#9733; Type in your address. 
+        <br>&#9733; Then click on the area near your address to see a new popup 
+        with Ecoregion names for your area.
+        <br> &#9733; The link in the popup will take you to the Wikipedia 
+        article for the Level 3 ecoregion, so remember the name of your 
+        Level 4 Ecoregion to look it up on the Wikipedia page. 
+    </div>
+  <div class="column middle" style="background-color:#0a0909;">
     <div id="map"></div>
   </div>
-  <div class="column right" style="background-color:#ccc;">Column R
-    <div id="column right">
-      
+    </div>
+  </div>
+</div>
+
+<div class="header2">
+  <h2 >Insert text for next map here!</h2>
+</div>
+
+<div class="row 2">
+  <div class="column two" style="background-color:#1430cc5b;"> 
+      <h3 :>Step 2: Soil<br>
+        <br>
+        What soil types are you live?</h3>
+      <p >To find out, <br> &#9733; Click the 
+        <br> to 
+        <br>  &#9733; Type in your address. 
+        <br> &#9733; Then .
+        <br> &#9733; Then .
+     
+    </div>
+  <div class="column middle2" style="background-color:#0a0909;">
+    <div id="map2"></div>
+  </div>
+    </div>
+  </div>
+</div>
+
+<div class="header3">
+  <h2 >Insert text for next map here!</h2>
+</div>
+
+<div class="row 3">
+  <div class="column three" style="background-color:#7008859f;"> 
+      <h3 :>Step 3: <br>
+        <br>
+        What are climate patterns where you live?</h3>
+      <p >To find out, <br> --Click the 
+        <br> to 
+        <br> --Type in your address. 
+        <br>
+          --Then .</p>
+      <p>Or ...</p>
+    </div>
+  <div class="column middle3" style="background-color:#0a0909;">
+    <div id="map3"></div>
+  </div>
     </div>
   </div>
 </div>
 
 <div class="footer">
-  <p>Footer</p>
+  <p>Map and webpage compiled and created by Leigh Torrence for the GEOG 571 Advanced Web Mapping Class in 2024</p>
 </div>
 
-  <script type="text/javascript" src="js/main.js"></script>
+
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/main2.js"></script>
+<script type="text/javascript" src="js/main3.js"></script>
+
 </body>
 </html>
 
